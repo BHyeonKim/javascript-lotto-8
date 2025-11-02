@@ -23,6 +23,17 @@ class Validator {
       throw new Error(ERROR_MESSAGE.NOT_DIVIDE_BY_BASE_UNIT);
     }
   }
+
+  static validateLottoNumber(number) {
+    Validator.validateNumber(number);
+
+    if (
+      number < GAME_CONSTANT.NUMBER_START ||
+      GAME_CONSTANT.NUMBER_END < number
+    ) {
+      throw new Error(ERROR_MESSAGE.LOTTO_NUMBER_OUT_OF_BOUND);
+    }
+  }
 }
 
 export default Validator;

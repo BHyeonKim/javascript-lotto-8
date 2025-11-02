@@ -1,6 +1,8 @@
 const GAME_CONSTANT = {
   LOTTO_LENGTH: 6,
   BASE_UNIT: 1000,
+  NUMBER_START: 1,
+  NUMBER_END: 45,
 };
 
 export default GAME_CONSTANT;
