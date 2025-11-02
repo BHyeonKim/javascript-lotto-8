@@ -34,6 +34,14 @@ class Validator {
       throw new Error(ERROR_MESSAGE.LOTTO_NUMBER_OUT_OF_BOUND);
     }
   }
+
+  static validateInteger(number) {
+    Validator.validateNumber(number);
+
+    if (!Number.isInteger(number)) {
+      throw new Error(ERROR_MESSAGE.NOT_INTEGER);
+    }
+  }
 }
 
 export default Validator;

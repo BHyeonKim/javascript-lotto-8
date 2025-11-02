@@ -5,6 +5,7 @@ const ERROR_MESSAGE = {
   LOTTO_DUPLICATED_NUMBER: '로또 번호는 중복될 수 없습니다.',
   LOTTO_NUMBER_OUT_OF_BOUND: `로또 번호는 ${GAME_CONSTANT.NUMBER_START}부터 ${GAME_CONSTANT.NUMBER_END} 사이에서 선택할 수 있습니다.`,
   NOT_NUMBER: '숫자가 아닙니다.',
+  NOT_INTEGER: '정수가 아닙니다.',
   NOT_POSITIVE_NUMBER: '양수가 아닙니다.',
   NOT_DIVIDE_BY_BASE_UNIT: `${GAME_CONSTANT.BASE_UNIT}으로 나누어 떨어지지 않습니다.`,
 };
