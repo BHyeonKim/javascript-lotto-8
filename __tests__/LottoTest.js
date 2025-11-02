@@ -29,4 +29,16 @@ describe('Lotto class test', () => {
       expect(lotto.getNumOfMatchedNumbers(winningNumbers)).toBe(expected);
     },
   );
+
+  it.each([
+    [[1, 2, 3, 4, 5, 6], 6, true],
+    [[1, 2, 3, 4, 5, 6], 7, false],
+  ])(
+    'checks if lotto numbers:%s have bonus number:%s, then returns %s',
+    (lottoNumbers, bonusNumber, expected) => {
+      const lotto = new Lotto(lottoNumbers);
+
+      expect(lotto.isWonBonus(bonusNumber)).toBe(expected);
+    },
+  );
 });
