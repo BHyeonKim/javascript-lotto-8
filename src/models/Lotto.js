@@ -8,7 +8,7 @@ class Lotto {
     this.#validateLottoLength(numbers);
     this.#validateLottoNumberDuplication(numbers);
 
-    this.#numbers = numbers;
+    this.#numbers = numbers.sort((a, b) => a - b);
   }
 
   #validateLottoLength(numbers) {
@@ -46,6 +46,10 @@ class Lotto {
 
   isWonBonus(bonusNumber) {
     return this.#checkNumber(bonusNumber);
+  }
+
+  get numbers() {
+    return [...this.#numbers];
   }
 }
 
