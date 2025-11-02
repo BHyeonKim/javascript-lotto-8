@@ -26,6 +26,7 @@ class Validator {
 
   static validateLottoNumber(number) {
     Validator.validateNumber(number);
+    Validator.validateInteger(number);
 
     if (
       number < GAME_CONSTANT.NUMBER_START ||
