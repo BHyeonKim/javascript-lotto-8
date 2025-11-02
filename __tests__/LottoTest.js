@@ -15,5 +15,18 @@ describe('Lotto class test', () => {
     }).toThrow('[ERROR]');
   });
 
-  // TODO: Write test code according to additional feature implementation
+  it.each([
+    [[1, 2, 3, 4, 5, 6], [1, 2, 10, 11, 12, 13], 2],
+    [[1, 2, 3, 4, 5, 6], [1, 2, 6, 11, 12, 13], 3],
+    [[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6], 6],
+    [[1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1], 6],
+    [[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12], 0],
+  ])(
+    'should return num of matched numbers lotto:%s,  win numbers:%s, expected:%s',
+    (lottoNumbers, winningNumbers, expected) => {
+      const lotto = new Lotto(lottoNumbers);
+
+      expect(lotto.getNumOfMatchedNumbers(winningNumbers)).toBe(expected);
+    },
+  );
 });
