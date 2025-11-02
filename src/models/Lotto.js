@@ -2,13 +2,23 @@ class Lotto {
   #numbers;
 
   constructor(numbers) {
-    this.#validate(numbers);
+    this.#validateLottoLength(numbers);
+    this.#validateLottoNumberDuplication(numbers);
+
     this.#numbers = numbers;
   }
 
-  #validate(numbers) {
+  #validateLottoLength(numbers) {
     if (numbers.length !== 6) {
       throw new Error('[ERROR] 로또 번호는 6개여야 합니다.');
+    }
+  }
+
+  #validateLottoNumberDuplication(numbers) {
+    const set = new Set(numbers);
+
+    if (numbers.length !== set.size) {
+      throw new Error('[ERROR] 로또 번호는 중복될 수 없습니다.');
     }
   }
 
@@ -17,7 +27,8 @@ class Lotto {
   }
 
   getNumOfMatchedNumbers(winningNumbers) {
-    this.#validate(winningNumbers);
+    this.#validateLottoLength(winningNumbers);
+    this.#validateLottoNumberDuplication(winningNumbers);
 
     let count = 0;
 
