@@ -82,4 +82,24 @@ describe('Validator class test', () => {
       },
     );
   });
+
+  describe('validateLottoNumber method test', () => {
+    it.each([[0], [46]])(
+      `should throw an error if arg is not between ${GAME_CONSTANT.NUMBER_START} and ${GAME_CONSTANT.NUMBER_END}`,
+      (arg) => {
+        expect(() => Validator.validateLottoNumber(arg)).toThrow(
+          ERROR_MESSAGE.LOTTO_NUMBER_OUT_OF_BOUND,
+        );
+      },
+    );
+
+    it.each([[1], [27], [45]])(
+      `should pass test if arg is between ${GAME_CONSTANT.NUMBER_START} and ${GAME_CONSTANT.NUMBER_END}`,
+      (arg) => {
+        expect(() => Validator.validateLottoNumber(arg)).not.toThrow(
+          ERROR_MESSAGE.LOTTO_NUMBER_OUT_OF_BOUND,
+        );
+      },
+    );
+  });
 });
