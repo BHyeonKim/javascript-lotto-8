@@ -8,6 +8,14 @@ class Parser {
 
     return number;
   }
+
+  static parseMoney(arg) {
+    const number = Parser.parseNumber(arg);
+
+    Validator.validateDivideByBaseUnit(number);
+
+    return number;
+  }
 }
 
 export default Parser;
