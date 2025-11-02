@@ -62,4 +62,24 @@ describe('Validator class test', () => {
       },
     );
   });
+
+  describe('validateInteger method test', () => {
+    it.each([[1.5], [2.7], [0.1], [-1.3]])(
+      'should throw an error if arg is not an integer:(%s)',
+      (arg) => {
+        expect(() => Validator.validateInteger(arg)).toThrow(
+          ERROR_MESSAGE.NOT_INTEGER,
+        );
+      },
+    );
+
+    it.each([[1], [2], [0], [-1]])(
+      'should pass test if arg is an integer:(%s)',
+      (arg) => {
+        expect(() => Validator.validateInteger(arg)).not.toThrow(
+          ERROR_MESSAGE.NOT_INTEGER,
+        );
+      },
+    );
+  });
 });
