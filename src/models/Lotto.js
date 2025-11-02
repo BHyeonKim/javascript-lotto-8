@@ -1,3 +1,6 @@
+import ERROR_MESSAGE from '../constants/error.js';
+import GAME_CONSTANT from '../constants/gameConstant.js';
+
 class Lotto {
   #numbers;
 
@@ -9,8 +12,8 @@ class Lotto {
   }
 
   #validateLottoLength(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error('[ERROR] 로또 번호는 6개여야 합니다.');
+    if (numbers.length !== GAME_CONSTANT.LOTTO_LENGTH) {
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.LOTTO_INVALID_LENGTH}`);
     }
   }
 
@@ -18,7 +21,7 @@ class Lotto {
     const set = new Set(numbers);
 
     if (numbers.length !== set.size) {
-      throw new Error('[ERROR] 로또 번호는 중복될 수 없습니다.');
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.LOTTO_DUPLICATED_NUMBER}`);
     }
   }
 
