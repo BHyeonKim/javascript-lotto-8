@@ -77,7 +77,7 @@ describe('Test LottoMachine class', () => {
     });
   });
 
-   describe('getRank method', () => {
+  describe('getRank method', () => {
     it.each([[[6, false]], [[6, true]]])(
       'should return rank 1 when 6 numbers match',
       (lottoResult) => {
@@ -131,8 +131,8 @@ describe('Test LottoMachine class', () => {
   describe('getRanks method', () => {
     it('should count ranks correctly from multiple lotto results', () => {
       const lottoResults = [
-        [6, false], 
-        [5, true], 
+        [6, false],
+        [5, true],
         [5, false],
         [4, false],
         [3, false],
