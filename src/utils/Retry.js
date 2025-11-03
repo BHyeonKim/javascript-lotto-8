@@ -13,7 +13,7 @@ class Retry {
         return Retry.execute(callback);
       }
 
-      View.print(`${ERROR_MESSAGE.PREFIX} ${ERROR_MESSAGE.RUNTIME_ERROR}}`);
+      View.print(`${ERROR_MESSAGE.PREFIX} ${ERROR_MESSAGE.RUNTIME_ERROR}`);
       View.printEmptyLine();
 
       return Retry.execute(callback);
