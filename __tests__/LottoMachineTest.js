@@ -76,4 +76,96 @@ describe('Test LottoMachine class', () => {
       ]);
     });
   });
+
+   describe('getRank method', () => {
+    it.each([[[6, false]], [[6, true]]])(
+      'should return rank 1 when 6 numbers match',
+      (lottoResult) => {
+        const rank = LottoMachine.getRank(lottoResult);
+
+        expect(rank).toBe(1);
+      },
+    );
+
+    it('should return rank 2 when 5 numbers match with bonus', () => {
+      const lottoResult = [5, true];
+
+      const rank = LottoMachine.getRank(lottoResult);
+
+      expect(rank).toBe(2);
+    });
+
+    it('should return rank 3 when 5 numbers match without bonus', () => {
+      const lottoResult = [5, false];
+
+      const rank = LottoMachine.getRank(lottoResult);
+
+      expect(rank).toBe(3);
+    });
+
+    it('should return rank 4 when 4 numbers match', () => {
+      const lottoResult = [4, false];
+
+      const rank = LottoMachine.getRank(lottoResult);
+
+      expect(rank).toBe(4);
+    });
+
+    it('should return rank 5 when 3 numbers match', () => {
+      const lottoResult = [3, false];
+
+      const rank = LottoMachine.getRank(lottoResult);
+
+      expect(rank).toBe(5);
+    });
+
+    it('should return 0 when less than 3 numbers match', () => {
+      const lottoResult = [2, false];
+
+      const rank = LottoMachine.getRank(lottoResult);
+
+      expect(rank).toBe(0);
+    });
+  });
+
+  describe('getRanks method', () => {
+    it('should count ranks correctly from multiple lotto results', () => {
+      const lottoResults = [
+        [6, false], 
+        [5, true], 
+        [5, false],
+        [4, false],
+        [3, false],
+        [2, false],
+      ];
+
+      const ranks = LottoMachine.getRanks(lottoResults);
+
+      expect(ranks).toEqual([0, 1, 1, 1, 1, 1]);
+    });
+
+    it('should return all zeros when no winning tickets', () => {
+      const lottoResults = [
+        [2, false],
+        [1, false],
+        [0, false],
+      ];
+
+      const ranks = LottoMachine.getRanks(lottoResults);
+
+      expect(ranks).toEqual([0, 0, 0, 0, 0, 0]);
+    });
+
+    it('should count multiple tickets with same rank', () => {
+      const lottoResults = [
+        [3, false],
+        [3, false],
+        [3, false],
+      ];
+
+      const ranks = LottoMachine.getRanks(lottoResults);
+
+      expect(ranks).toEqual([0, 0, 0, 0, 0, 3]);
+    });
+  });
 });
