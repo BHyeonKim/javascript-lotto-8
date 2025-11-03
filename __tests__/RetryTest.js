@@ -39,7 +39,9 @@ describe('Retry class test', () => {
 
     await Retry.execute(callback);
 
-    expect(log).toHaveBeenCalledWith(expect.stringContaining(ERROR_MESSAGE.PREFIX));
-    expect(callback).toHaveBeenCalledTimes(2)
+    expect(log).toHaveBeenCalledWith(
+      expect.stringContaining(ERROR_MESSAGE.PREFIX),
+    );
+    expect(callback).toHaveBeenCalledTimes(2);
   });
 });
