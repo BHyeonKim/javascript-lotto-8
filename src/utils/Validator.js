@@ -43,6 +43,12 @@ class Validator {
       throw new Error(ERROR_MESSAGE.NOT_INTEGER);
     }
   }
+
+  static validateLottoLength(numbers) {
+    if (numbers.length !== GAME_CONSTANT.LOTTO_LENGTH) {
+      throw new Error(`[ERROR] ${ERROR_MESSAGE.LOTTO_INVALID_LENGTH}`);
+    }
+  }
 }
 
 export default Validator;

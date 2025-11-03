@@ -1,5 +1,5 @@
 import ERROR_MESSAGE from '../constants/error.js';
-import GAME_CONSTANT from '../constants/gameConstant.js';
+import Validator from '../utils/Validator.js';
 
 class Lotto {
   #numbers;
@@ -12,9 +12,7 @@ class Lotto {
   }
 
   #validateLottoLength(numbers) {
-    if (numbers.length !== GAME_CONSTANT.LOTTO_LENGTH) {
-      throw new Error(`[ERROR] ${ERROR_MESSAGE.LOTTO_INVALID_LENGTH}`);
-    }
+    Validator.validateLottoLength(numbers);
   }
 
   #validateLottoNumberDuplication(numbers) {
