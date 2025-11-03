@@ -49,4 +49,57 @@ describe('Parser class test', () => {
       },
     );
   });
+
+  describe('parseWinningNumbers method test', () => {
+    it('should parse comma separated numbers and return an array', () => {
+      const input = '1,2,3,4,5,6';
+
+      const result = Parser.parseWinningNumbers(input);
+
+      expect(result).toEqual([1, 2, 3, 4, 5, 6]);
+      expect(Array.isArray(result)).toBe(true);
+    });
+
+    it('should throw an error if any number is not valid', () => {
+      const input = '1,2,abc,4,5,6';
+
+      expect(() => Parser.parseWinningNumbers(input)).toThrow(
+        ERROR_MESSAGE.NOT_NUMBER,
+      );
+    });
+
+    it.each([['1.5,2,3,4,5,6'], ['1,2,3,4,5,6.7']])(
+      'should throw an error if any number is not an integer:(%s)',
+      (input) => {
+        expect(() => Parser.parseWinningNumbers(input)).toThrow(
+          ERROR_MESSAGE.NOT_INTEGER,
+        );
+      },
+    );
+
+    it.each([['0,1,2,3,4,5'], ['1,2,3,4,5,46'], ['-1,1,2,3,4,5']])(
+      `should throw an error if any number is out of range (${GAME_CONSTANT.NUMBER_START}-${GAME_CONSTANT.NUMBER_END}):(%s)`,
+      (input) => {
+        expect(() => Parser.parseWinningNumbers(input)).toThrow(
+          ERROR_MESSAGE.LOTTO_NUMBER_OUT_OF_BOUND,
+        );
+      },
+    );
+
+    it('should parse numbers with spaces after commas', () => {
+      const input = '1, 2, 3, 4, 5, 6';
+
+      const result = Parser.parseWinningNumbers(input);
+
+      expect(result).toEqual([1, 2, 3, 4, 5, 6]);
+    });
+
+    it('should handle valid winning numbers at boundary values', () => {
+      const input = '1,2,3,43,44,45';
+
+      const result = Parser.parseWinningNumbers(input);
+
+      expect(result).toEqual([1, 2, 3, 43, 44, 45]);
+    });
+  });
 });
