@@ -1,6 +1,6 @@
-import ERROR_MESSAGE from '../src/constants/error';
-import Retry from '../src/utils/retry';
-import View from '../src/View';
+import ERROR_MESSAGE from '../src/constants/error.js';
+import Retry from '../src/utils/retry.js';
+import View from '../src/View.js';
 
 describe('Retry class test', () => {
   it('should retry if callback funcion rejected one time', async () => {
