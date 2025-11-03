@@ -2,7 +2,7 @@ import GAME_CONSTANT from './constants/gameConstant.js';
 import { INPUT_PROMPT, OUTPUT_MESSAGE } from './constants/message.js';
 import LottoMachine from './models/LottoMachine.js';
 import Parser from './utils/Parser.js';
-import Retry from './utils/retry.js';
+import Retry from './utils/Retry.js';
 import Validator from './utils/Validator.js';
 import View from './View.js';
 

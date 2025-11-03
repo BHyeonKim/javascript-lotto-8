@@ -1,5 +1,5 @@
 import ERROR_MESSAGE from '../src/constants/error.js';
-import Retry from '../src/utils/retry.js';
+import Retry from '../src/utils/Retry.js';
 import View from '../src/View.js';
 
 describe('Retry class test', () => {
