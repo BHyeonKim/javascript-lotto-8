@@ -8,6 +8,8 @@ const ERROR_MESSAGE = {
   NOT_INTEGER: '정수가 아닙니다.',
   NOT_POSITIVE_NUMBER: '양수가 아닙니다.',
   NOT_DIVIDE_BY_BASE_UNIT: `${GAME_CONSTANT.BASE_UNIT}으로 나누어 떨어지지 않습니다.`,
+  PREFIX: '[ERROR]',
+  RUNTIME_ERROR: '실행중에 에러가 발생했습니다.',
 };
 
 export default ERROR_MESSAGE;
