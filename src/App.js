@@ -1,5 +1,5 @@
 import GAME_CONSTANT from './constants/gameConstant.js';
-import MESSAGE from './constants/message.js';
+import { INPUT_PROMPT, OUTPUT_MESSAGE } from './constants/message.js';
 import LottoMachine from './models/LottoMachine.js';
 import Parser from './utils/Parser.js';
 import Retry from './utils/retry.js';
@@ -42,21 +42,21 @@ class App {
   }
 
   async #getMoney() {
-    const input = await View.getInput(MESSAGE.ENTER_PURCHASE_AMOUNT);
+    const input = await View.getInput(INPUT_PROMPT.PURCHASE_AMOUNT);
     const money = Parser.parseMoney(input);
 
     return money;
   }
 
   async #getWinningNumbers() {
-    const input = await View.getInput(MESSAGE.ENTER_WINNING_NUMBERS);
+    const input = await View.getInput(INPUT_PROMPT.WINNING_NUMBERS);
     const winningNumbers = Parser.parseWinningNumbers(input);
 
     return winningNumbers;
   }
 
   async #getBonusNumber() {
-    const input = await View.getInput(MESSAGE.ENTER_WINNING_NUMBERS);
+    const input = await View.getInput(INPUT_PROMPT.BONUS_NUMBER);
     const bonusNumber = Parser.parseNumber(input);
 
     Validator.validateLottoNumber(bonusNumber);
@@ -89,7 +89,7 @@ class App {
   }
 
   #printNumOfAmount(amount) {
-    View.print(`${amount}개를 구매했습니다.`);
+    View.print(OUTPUT_MESSAGE.purchaseCount(amount));
   }
 
   #printLottoTicket(lotto) {
@@ -103,7 +103,7 @@ class App {
   }
 
   #printRateOfReturn(rateOfReturn) {
-    View.print(`총 수익률은 ${rateOfReturn}%입니다.`);
+    View.print(OUTPUT_MESSAGE.rateOfReturn(rateOfReturn));
   }
 }
 
