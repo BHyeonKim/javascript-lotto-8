@@ -16,6 +16,17 @@ class Parser {
 
     return number;
   }
+
+  static parseWinningNumbers(string) {
+    const numbers = string.split(',').map(Parser.parseNumber);
+
+    numbers.forEach((number) => {
+      Validator.validateLottoNumber(number);
+    });
+    Validator.validateLottoLength(numbers);
+
+    return numbers;
+  }
 }
 
 export default Parser;
