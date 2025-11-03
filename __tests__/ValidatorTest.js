@@ -102,4 +102,24 @@ describe('Validator class test', () => {
       },
     );
   });
+
+  describe('validateLottoLength method test', () => {
+    it.each([[[1, 2, 3, 4, 5]], [[1, 2, 3, 4, 5, 6, 7]], [[1]], [[]]])(
+      `should throw an error if array length is not ${GAME_CONSTANT.LOTTO_LENGTH}:(%s)`,
+      (arg) => {
+        expect(() => Validator.validateLottoLength(arg)).toThrow(
+          ERROR_MESSAGE.LOTTO_INVALID_LENGTH,
+        );
+      },
+    );
+
+    it.each([[[1, 2, 3, 4, 5, 6]], [[10, 20, 30, 40, 45, 1]]])(
+      `should pass test if array length is ${GAME_CONSTANT.LOTTO_LENGTH}:(%s)`,
+      (arg) => {
+        expect(() => Validator.validateLottoLength(arg)).not.toThrow(
+          ERROR_MESSAGE.LOTTO_INVALID_LENGTH,
+        );
+      },
+    );
+  });
 });
